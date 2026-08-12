@@ -12,8 +12,11 @@ const Bus = sequelize.define('Bus', {
   plate: { type: DataTypes.STRING, allowNull: false, unique: true }, // placa
   capacity: { type: DataTypes.INTEGER, allowNull: false },  // capacidad
   status: {
-    type: DataTypes.ENUM('activo', 'mantenimiento', 'inactivo'),
+    type: DataTypes.STRING,
     defaultValue: 'activo',
+    validate: {
+      isIn: [['activo', 'mantenimiento', 'inactivo']],
+    },
   },
 }, {
   tableName: 'buses',

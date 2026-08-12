@@ -1,8 +1,12 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+const dbName = process.env.NODE_ENV === 'test'
+  ? (process.env.DB_TEST_NAME || 'busmanager_test')
+  : process.env.DB_NAME;
+
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
+  dbName,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
   {
@@ -12,7 +16,7 @@ const sequelize = new Sequelize(
     dialectOptions: {
       options: {
         instanceName: process.env.DB_INSTANCE || undefined,
-        encrypt: false,
+        encrypt: false, // true si usas Azure SQL o requieres conexión cifrada
         trustServerCertificate: true,
       },
     },
