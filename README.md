@@ -5,16 +5,16 @@ Sistema web para la gestión centralizada de una flota de autobuses: unidades, c
 ## Tecnologías
 - Frontend: React + Tailwind CSS
 - Backend: Node.js + Express
-- Base de datos: MySQL
+- Base de datos: SQL Server
 - Control de versiones: Git + GitHub
 - Gestión ágil: Jira
 
 ## Estructura del repositorio
 ```
 busmanager/
-├── backend/       -> API REST (Node.js + Express + MySQL)
-├── frontend/      -> Interfaz web (React + Tailwind)
-└── README.md
+ backend/       -> API REST (Node.js + Express + SQL Server)
+ frontend/      -> Interfaz web (React + Tailwind)
+ README.md
 ```
 
 ## Primer Release - Módulos
@@ -30,9 +30,11 @@ busmanager/
 ```
 cd backend
 npm install
-cp .env.example .env   # completar variables de entorno
+cp .env.example .env   # completar variables de entorno (usuario/contraseña de SQL Server)
 npm run dev
 ```
+
+Requiere tener SQL Server (Express, Developer o full) corriendo localmente, con autenticación SQL habilitada (no solo Windows Authentication), ya que el backend se conecta con usuario y contraseña.
 
 ### Frontend
 ```
